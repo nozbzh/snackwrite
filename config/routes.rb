@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :contests, only: [:new] do
         member do
           resources :posts, only: :create
+          post "post" => "posts#create", as: :post
         end
       end
     end

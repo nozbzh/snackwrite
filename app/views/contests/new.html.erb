@@ -17,7 +17,7 @@
     <br>
     <%= @unfinished_contests.first.posts.first.content %>
   </p>
-  <%= simple_form_for [@contest, @post], url: posts_path(@contest) do |f| %>
+  <%= simple_form_for [@contest, @post], url: post_contest_path(@contest) do |f| %>
   <%= f.error_notification %>
   <%= f.input :content, required: true %>
   <%= f.button :submit, "Send", class: "btn btn-primary" %>

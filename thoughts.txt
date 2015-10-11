@@ -6,6 +6,10 @@ make users be allowed to vote only once per contest
 before user can play, check user.contests for contest ID to make sure he's allowed to play
 Time limit not implemented yet
 
+Contest is created too soon, it can be empty and have no posts. If I change logic, form wont submit because contest ID is nil.
+I need to change post path when we are the second person participating in a contest. It just creates another new contest at the moment.
+
+
 
 old topic index:
 <% if @unfinished_contests.blank? %>
