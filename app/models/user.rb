@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :contests, through: :posts
+  has_many :voted_contests, through: :posts, source: :contests
 end

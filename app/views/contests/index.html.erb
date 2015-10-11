@@ -1,11 +1,16 @@
 <h1>All contests</h1>
-<ul>
-  <% @contests.each do |contest| %>
-    <li><%= link_to "Contest number #{contest.id}", contest_path(contest) %>. <br>The word was "<%= contest.word %>":</li>
-    <ul>
-    <% contest.posts.each do |post| %>
-      <li><%= "#{post.user.name} wrote:" %> <br> <%= post.content %></li>
+
+<% if @contests.blank? %>
+  <p>No contest here yet. <%= link_to "Be the first to play!", topics_path %></p>
+<% else %>
+  <ul>
+    <% @contests.each do |contest| %>
+      <li><%= link_to "Contest number #{contest.id}", contest_path(contest) %>. <br>The word was "<%= contest.word %>":</li>
+      <ul>
+      <% contest.posts.each do |post| %>
+        <li><%= "#{post.user.name} wrote:" %> <br> <%= post.content %></li>
+      <% end %>
+      </ul>
     <% end %>
-    </ul>
-  <% end %>
-</ul>
+  </ul>
+<% end %>

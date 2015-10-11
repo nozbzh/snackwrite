@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   root to: 'pages#home'
 
   resources :topics, only: [:index] do
@@ -13,7 +15,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contests, only: [:index, :show]
+  get "contest/:id" => "contests#continue_contest", as: :continue_contest
+
+  resources :contests, only: [:index, :show] do
+    member do
+      resources :posts, only: :show do
+        member do
+          post :vote
+        end
+      end
+    end
+  end
 
 
 

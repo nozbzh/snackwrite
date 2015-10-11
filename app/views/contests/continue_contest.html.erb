@@ -1,0 +1,11 @@
+<h1>Continue contest for <%= @contest.word %></h1>
+<p>
+  Here is what <%= @contest.users.first.name %> wrote:
+  <br>
+  <%= @contest.posts.first.content %>
+</p>
+<%= simple_form_for [@contest, @post], url: posts_path(@contest) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :content, required: true %>
+  <%= f.button :submit, "Send", class: "btn btn-primary" %>
+<% end %>

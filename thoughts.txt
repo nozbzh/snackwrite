@@ -1,3 +1,7 @@
 Need to add votes to posts
 use AASM for status
-use activeadmin to add and manage
+use activeadmin to add words and manage app
+limit user posts to 1 per contest
+make users be allowed to vote only once per contest
+before user can play, check user.contests for contest ID to make sure he's allowed to play
+Time limit not implemented yet

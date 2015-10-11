@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 #gem I added
+gem 'activerecord-reputation-system'
 gem 'omniauth-facebook'
 #end of gems I added
 

@@ -4,10 +4,13 @@ class PostsController < ApplicationController
   def create
     @post = @contest.posts.build(post_params)
     @post.user = current_user
-    # make @contest.status = half-complete if @contest.posts.size < 1
-    # make @contest.status = complete if @contest.posts.size > 0
+    if @contest.status == nil
+      @contest.update_attribute(:status, "unfinished")
+    else
+      @contest.update_attribute(:status, "finished")
+    end
     if @post.save
-      redirect_to root_path #contest show
+      redirect_to contest_path(@contest), notice: "Thank you for playing."
     else
       raise
       #render "contests/index"
