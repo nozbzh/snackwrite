@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+  resources :topics, only: [:index] do
+    #get "choose-your-word" => "topics#choose_word", as: :word
+    member do
+      resources :contests, only: [:new] do
+        member do
+          resources :posts, only: :create
+        end
+      end
+    end
+  end
+
+  resources :contests, only: [:index, :show]
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

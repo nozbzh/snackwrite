@@ -1,0 +1,3 @@
+Need to add votes to posts
+use AASM for status
+use activeadmin to add and manage
