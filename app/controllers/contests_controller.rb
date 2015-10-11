@@ -14,6 +14,9 @@ class ContestsController < ApplicationController
     @contest = Contest.new
     @contest.word = @topic.word
     @contest.save
+    @unfinished_contests = Contest.all.where("status != 'finished'")
+    @unplayable_contests = @unfinished_contests & @user.contests
+    raise
   end
 
   def continue_contest

@@ -1,33 +1,4 @@
-<% if @unfinished_contests.blank? %>
-
-  <h1>Your word is: <%= @topic.word %></h1>
-  <%= link_to "Get another word", topics_path %>
-  <br>
-  <%= link_to "Play", new_contest_path(@topic) %>
-
-<% elsif !(@unfinished_contests & current_user.contests).empty? %>
-
-  <h1>Your word is: <%= @topic.word %></h1>
-  <%= link_to "Get another word", topics_path %>
-  <br>
-  <%= link_to "Play", new_contest_path(@topic) %>
-
-<% else %>
-
-  <h1>There is an unfinished contest!</h1>
-  <h2>The word is: <%= @unfinished_contests.first.word %></h2>
-  <p>
-    <%= @unfinished_contests.first.users.first.name %> wrote:
-    <br>
-    <%= @unfinished_contests.first.posts.first.content %>
-  </p>
-
-  <p><%= link_to "Click here to play", continue_contest_path(@unfinished_contests.first) %></p>
-
-  <h3>Or you can start a new contest with the word: <%= @topic.word %></h3>
-
-  <%= link_to "Get another word", topics_path %>
-  <br>
-  <%= link_to "Play", new_contest_path(@topic) %>
-
-<% end %>
+<h1>Your word is: <%= @topic.word %></h1>
+<%= link_to "Get another word", topics_path %>
+<br>
+<%= link_to "Play", new_contest_path(@topic) %>
