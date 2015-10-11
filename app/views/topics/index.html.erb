@@ -5,6 +5,13 @@
   <br>
   <%= link_to "Play", new_contest_path(@topic) %>
 
+<% elsif !(@unfinished_contests & current_user.contests).empty? %>
+
+  <h1>Your word is: <%= @topic.word %></h1>
+  <%= link_to "Get another word", topics_path %>
+  <br>
+  <%= link_to "Play", new_contest_path(@topic) %>
+
 <% else %>
 
   <h1>There is an unfinished contest!</h1>
