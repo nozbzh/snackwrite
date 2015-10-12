@@ -2,9 +2,7 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+//@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -15,6 +13,25 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+@font-face {
+  font-family: "Futura BT";
+  src: url('futurab.ttf');
+}
+$my-base-font: "Futura BT";
+@font-face {
+  font-family: "Futura BT Light";
+  src: url('futural.ttf');
+}
+$my-accent-font: "Futura BT Light";
+@font-face {
+  font-family: "Garamond Italic";
+  src: url('garait.ttf');
+}
+$my-tagline-font: "Garamond Italic";
+
+$base-font: $my-base-font, "Verdana", "sans-serif";
+$header-font: $my-accent-font, "Helvetica", "sans-serif";
+$tagline-font: $my-tagline-font, "Helvetica", "sans-serif";
 
 // Font-size and line-height
 $base-size: 16px;
