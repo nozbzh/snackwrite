@@ -10,13 +10,14 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="container">
+    <%= javascript_include_tag 'application' %>
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
           <%= yield %>
         </div>
       </div>
     </div>
-    <%= javascript_include_tag 'application' %>
+    
   </body>
 </html>
