@@ -1,3 +1,51 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.confirm {
+  left:37%;
+}
+
+span.word {
+    &-topic {
+        letter-spacing: .8px;
+        font-size:40px;
+        text-transform:uppercase;
+        vertical-align:middle;
+        padding-left:8px;
+        padding-right:8px;
+    }
+}
+.word {
+    &-intro {
+        font-size:20px;
+        margin-left:4%;
+        letter-spacing: 3px;
+        text-transform:uppercase;
+    }
+    
+}
+/* dropt css is for managing dynamic hovers over text */
+span.dropt {
+    border-bottom: thin dotted;
+    background: #fff8a7;
+    &:hover {
+        text-decoration: none;
+        background: #ffffff;
+        z-index: 6;
+    }
+}
+span.dropt span {
+    position: absolute; left: -9999px;
+    padding: 3px 3px 3px 3px;
+    border-style:solid;
+    border-color:black;
+    border-width:1px;
+    z-index: 6;
+    &:hover {
+        top: 50px; 
+        left: 0%; 
+        background: #ffffff;
+        margin: 20px 0 0 170px;
+    }
+}

@@ -1,33 +1,32 @@
-<% if @unfinished_contests.blank? %>
-
-  <h1>Your word is: <%= @topic.word %></h1>
-  <%= link_to "Get another word", topics_path %>
-  <br>
-  <%= link_to "Play", new_contest_path(@topic) %>
-
-<% elsif !(@unfinished_contests & current_user.contests).empty? %>
-
-  <h1>Your word is: <%= @topic.word %></h1>
-  <%= link_to "Get another word", topics_path %>
-  <br>
-  <%= link_to "Play", new_contest_path(@topic) %>
-
-<% else %>
-
-  <h1>There is an unfinished contest!</h1>
-  <h2>The word is: <%= @unfinished_contests.first.word %></h2>
-  <p>
-    <%= @unfinished_contests.first.users.first.name %> wrote:
-    <br>
-    <%= @unfinished_contests.first.posts.first.content %>
-  </p>
-
-  <p><%= link_to "Click here to play", continue_contest_path(@unfinished_contests.first) %></p>
-
-  <h3>Or you can start a new contest with the word: <%= @topic.word %></h3>
-
-  <%= link_to "Get another word", topics_path %>
-  <br>
-  <%= link_to "Play", new_contest_path(@topic) %>
-
-<% end %>
+<div class="row">
+  <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+              <span class="word-intro">your word is:</span>
+              <span class="dropt word-topic">
+                <% if @unfinished_contests.blank? %>
+                  <%= @topic.word %>
+                <% else %>
+                  <%= @unfinished_contests.first.word %>
+                <% end %>
+              </span>
+              <div>
+                  <% if @unfinished_contests.blank? %>
+                    <%= @topic.definition %>
+                  <% else %>
+                    <%= @unfinished_contests.first.definition %>
+                  <% end %>
+              </div>
+              
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="bubble-shadow confirm"></div>
+              <div class="bubble-push confirm">
+                <%= link_to "ok", new_contest_path(@topic), :class => "choice" %>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

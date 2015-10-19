@@ -15,18 +15,13 @@
 $(document).ready(function() {
   $(window).resize(
     function(){
-          $windowWidth = $(this).width();
           $("[class^=bubble]").width($(window).width()/4.5);
           $("[class^=bubble]").height($('[class^=bubble]').width());
           
-          $winHeight = $(window).height();
-          if ($winHeight < 400) {
-            $winHeight = 400
-          }
+          $winHeight = Math.max($(window).height(), 400);
           $('.bubble-push').css('top', ($winHeight*0.35)+'px');
           $('.bubble-shadow').css('top', ($winHeight*0.37)+'px');
-          
-          
+      
           $(".choice").css('font-size',($(window).width()/17)+'px');
       }
   );
