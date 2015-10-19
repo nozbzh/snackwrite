@@ -1,13 +1,5 @@
 <nav class="navbar-wagon">
   <div class="container navbar-wagon-container">
-    <div class="navbar-wagon-brand">
-      <span class="brand-tagline-left">ficticious</span>
-      <a href="/">
-        <%= image_tag "pencilcake.png" %>
-      </a>
-      <span class="brand-tagline-right" id="tagright">nibbling</span>
-      <p class="brand-title" id="bigname">snackwrite</p>
-    </div>
     <% if user_signed_in? %>
     <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link hidden-xs" do %>
       <div class="icon-badge-container">

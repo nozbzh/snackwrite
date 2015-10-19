@@ -16,13 +16,17 @@ $(document).ready(function() {
   $(window).resize(
     function(){
           $windowWidth = $(this).width();
-          
           $("[class^=bubble]").width($(window).width()/4.5);
           $("[class^=bubble]").height($('[class^=bubble]').width());
-          $bubbleWidth = $("[class^=bubble]").width();
-          console.log($bubbleWidth);
-          $('.bubble-push').css('top', ($(window).height()*0.35)+'px');
-          $('.bubble-shadow').css('top', ($(window).height()*0.37)+'px');
+          
+          $winHeight = $(window).height();
+          if ($winHeight < 400) {
+            $winHeight = 400
+          }
+          $('.bubble-push').css('top', ($winHeight*0.35)+'px');
+          $('.bubble-shadow').css('top', ($winHeight*0.37)+'px');
+          
+          
           $(".choice").css('font-size',($(window).width()/17)+'px');
       }
   );
