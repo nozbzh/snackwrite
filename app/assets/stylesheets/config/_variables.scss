@@ -15,17 +15,17 @@
 // $my-font: "Font Name";
 @font-face {
   font-family: "Futura BT";
-  src: url('futurab.ttf');
+  src: font-url('futurab.ttf');
 }
 $my-base-font: "Futura BT";
 @font-face {
   font-family: "Futura BT Light";
-  src: url('futural.ttf');
+  src: font-url('futural.ttf');
 }
 $my-accent-font: "Futura BT Light";
 @font-face {
   font-family: "Garamond Italic";
-  src: url('garait.ttf');
+  src: font-url('garait.ttf');
 }
 $my-tagline-font: "Garamond Italic";
 
