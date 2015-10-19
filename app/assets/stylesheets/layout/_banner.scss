@@ -1,0 +1,46 @@
+@mixin garamondlight() {
+  font-family: $tagline-font;
+  letter-spacing: 10px;
+  opacity: .25;
+}
+@mixin futuralight() {
+  font-family: $my-accent-font;
+  letter-spacing: 10px;
+  opacity: .75;
+  font-size:20px;
+}
+.banner {
+  text-align: center;
+  margin-top: -3em;
+}
+.brand {
+  &-tagline {
+    &-left {
+      padding-right: 3%;
+      @include garamondlight;
+    }
+    &-right {
+      padding-left: 3%;
+      @include garamondlight;
+    }
+  }
+  &-title {
+    &-large {
+      padding-top: 2%;
+      @include futuralight;
+    }
+    &-small {
+      padding-top: 2%;
+      @include futuralight;
+      text-align: center;
+    }
+  }
+}
+
+.logo {
+  display:inline;
+  &-large, &-small {
+    margin-top: 2%;
+  }
+  
+}
