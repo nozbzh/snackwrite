@@ -2,3 +2,35 @@
 <%= link_to "Get another word", topics_path %>
 <br>
 <%= link_to "Play", new_contest_path(@topic) %>
+<div class="row">
+  <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+              <span class="word-intro">your word is:</span>
+              <span class="dropt word-topic">
+                <% if @unfinished_contests.blank? %>
+                  <%= @topic.word %>
+                <% else %>
+                  <%= @unfinished_contests.first.word %>
+                <% end %>
+              </span>
+              <div>
+                  <% if @unfinished_contests.blank? %>
+                    <%= @topic.definition %>
+                  <% else %>
+                    <%= @unfinished_contests.first.definition %>
+                  <% end %>
+              </div>
+
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="bubble-shadow confirm"></div>
+              <div class="bubble-push confirm">
+                <%= link_to "ok", new_contest_path(@topic), :class => "choice" %>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

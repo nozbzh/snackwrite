@@ -1,30 +1,39 @@
+ function loadXMLDoc()
+{
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+}
+
 $(document).ready(function() {
-  /* On window resize, readjust the width/height of the bubbles */
   $(window).resize(
     function(){
-        $windowWidth = $(this).width();
-        
-        $('.bubble').width($(window).width()/12);
-        $('.bubble').height($('.bubble').width());
-        $bubbleWidth = $('.bubble').width();
-        console.log($bubbleWidth);
-        $('.pushme').css('top', ($(window).height()*0.4)+'px');
-        $('.shadow').css('top', ($(window).height()*0.42)+'px');
-        $('p.choice').css('font-size',($(window).width()/17)+'px');
-        $('p.choice').css('left', '16%');
-    }
+          $("[class^=bubble]").width($(window).width()/4.5);
+          $("[class^=bubble]").height($('[class^=bubble]').width());
+          
+          $winHeight = Math.max($(window).height(), 400);
+          $('.bubble-push').css('top', ($winHeight*0.35)+'px');
+          $('.bubble-shadow').css('top', ($winHeight*0.37)+'px');
+      
+          $(".choice").css('font-size',($(window).width()/17)+'px');
+      }
   );
 
   $(window).resize();
-
   $(function ()
-  {
-    $(".pushme").mouseenter(function () {
-        $(this).animate({top:'+=2%'}, 'fast');
-    }).mouseleave(function ()
     {
-        $(this).animate({top:'-=2%'}, 'fast');
+      $('.bubble-push').mouseenter(function () {
+          $(this).animate({top:'+=2%'}, 'fast');
+      }).mouseleave(function ()
+      {
+          $(this).animate({top:'-=2%'}, 'fast');
+      });
     });
-  });
 });
-

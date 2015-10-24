@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Topic.create([{word: 'Cherries', definition: 'red fruit'}, {word: 'Frisky', definition: 'a feeling of playful restlessness'}])
