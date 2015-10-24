@@ -1,24 +1,20 @@
-<h1>Your word is: <%= @topic.word %></h1>
-<%= link_to "Get another word", topics_path %>
-<br>
-<%= link_to "Play", new_contest_path(@topic) %>
 <div class="row">
   <div class="col-xs-12 col-md-12 col-lg-12">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
               <span class="word-intro">your word is:</span>
               <span class="dropt word-topic">
-                <% if @unfinished_contests.blank? %>
+                <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
                   <%= @topic.word %>
                 <% else %>
-                  <%= @unfinished_contests.first.word %>
+                  <%= @unfinished_contests.first.topic.word %>
                 <% end %>
               </span>
               <div>
-                  <% if @unfinished_contests.blank? %>
+                  <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
                     <%= @topic.definition %>
                   <% else %>
-                    <%= @unfinished_contests.first.definition %>
+                    <%= @unfinished_contests.first.topic.definition %>
                   <% end %>
               </div>
 

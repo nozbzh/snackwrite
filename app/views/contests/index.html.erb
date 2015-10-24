@@ -5,7 +5,7 @@
 <% else %>
   <ul>
     <% @contests.each do |contest| %>
-      <li><%= link_to "Contest number #{contest.id}", contest_path(contest) %>. <br>The word was "<%= contest.word %>":</li>
+      <li><%= link_to "Contest number #{contest.id}", contest_path(contest) %>. <br>The word was "<%= contest.topic.word %>":</li>
       <ul>
       <% contest.posts.each do |post| %>
         <li>

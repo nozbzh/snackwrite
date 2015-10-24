@@ -12,10 +12,9 @@ class ContestsController < ApplicationController
 
   def new
     @contest = Contest.new
-    @contest.word = @topic.word
+    @contest.topic = @topic
     @contest.save
     @unfinished_contests = Contest.all.where("status != 'finished'")
-    @unfinished_contests = @unfinished_contests.where(word: @topic.word)
     @unplayable_contests = @unfinished_contests & @user.contests
   end
 

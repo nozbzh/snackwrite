@@ -1,5 +1,3 @@
-<h1>Your word is: <%= @contest.word %></h1>
-
 <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
 
   <h2>New contest</h2>
@@ -11,7 +9,7 @@
 
 <% else %>
 
-  <h2>There is an unfinished contest for your word!</h2>
+  <h2>There is an unfinished contest for the word <% @unfinished_contests.first.topic.word %>!</h2>
   <p>
     <%= @unfinished_contests.first.users.first.name %> wrote:
     <br>
