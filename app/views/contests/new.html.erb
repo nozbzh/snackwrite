@@ -1,5 +1,5 @@
 <h2>New contest</h2>
-<%= simple_form_for [@contest, @post], url: post_contest_path(@contest) do |f| %>
+<%= simple_form_for [@contest, @post], url: create_contests_path(@topic) do |f| %>
   <%= f.error_notification %>
   <%= f.input :content, required: true %>
   <%= f.button :submit, "Send", class: "btn btn-primary" %>
