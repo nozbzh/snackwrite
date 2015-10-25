@@ -14,9 +14,9 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-gem 'aasm'
 
 #gem I added
+gem 'aasm'
 gem 'activerecord-reputation-system'
 gem 'omniauth-facebook'
 #end of gems I added
