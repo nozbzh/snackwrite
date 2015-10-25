@@ -1,4 +1,5 @@
-<h2>New contest</h2>
+<h2>New contest for the word <%= @topic.word %></h2>
+<p><%= @topic.definition %></p>
 <%= simple_form_for [@contest, @post], url: create_contests_path(@topic) do |f| %>
   <%= f.error_notification %>
   <%= f.input :content, required: true %>

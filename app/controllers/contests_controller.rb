@@ -10,7 +10,6 @@ class ContestsController < ApplicationController
   end
 
   def new
-    @unplayable_contests = @unfinished_contests & @user.contests
   end
 
   def create

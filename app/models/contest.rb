@@ -3,6 +3,8 @@ class Contest < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :users, through: :posts
+  has_many :votes
+  has_many :voters, through: :votes, source: :user
   belongs_to :topic
   #validates :posts, presence: true
 
