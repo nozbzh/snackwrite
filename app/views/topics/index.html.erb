@@ -24,7 +24,11 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="bubble-shadow confirm"></div>
               <div class="bubble-push confirm">
-                <%= link_to "ok", new_contest_path(@topic), :class => "choice" %>
+                <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
+                  <%= link_to "ok", new_contest_path(@topic), class: "choice" %>
+                <% else %>
+                  <%= link_to "ok", continue_contest_path(@unfinished_contests.first), class: "choice" %>
+                <% end %>
               </div>
           </div>
       </div>

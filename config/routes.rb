@@ -8,10 +8,14 @@ Rails.application.routes.draw do
     #get "choose-your-word" => "topics#choose_word", as: :word
     member do
       resources :contests, only: [:new] do
+        #post "first_post" => "contests#create_post", as: :first_post
         member do
-          resources :posts, only: :create
-          post "post" => "posts#create", as: :post
+          post "post" => "contests#create_post", as: :post
         end
+        # member do
+        #   resources :posts, only: :create
+        #   post "post" => "posts#create", as: :post
+        # end
       end
     end
   end
