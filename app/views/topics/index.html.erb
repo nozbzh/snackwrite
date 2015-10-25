@@ -4,27 +4,31 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
               <span class="word-intro">your word is:</span>
               <span class="dropt word-topic">
-                <% if @unfinished_contests.blank? %>
+                <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
                   <%= @topic.word %>
                 <% else %>
-                  <%= @unfinished_contests.first.word %>
+                  <%= @unfinished_contests.first.topic.word %>
                 <% end %>
               </span>
               <div>
-                  <% if @unfinished_contests.blank? %>
+                  <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
                     <%= @topic.definition %>
                   <% else %>
-                    <%= @unfinished_contests.first.definition %>
+                    <%= @unfinished_contests.first.topic.definition %>
                   <% end %>
               </div>
-              
+
           </div>
       </div>
       <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="bubble-shadow confirm"></div>
               <div class="bubble-push confirm">
-                <%= link_to "ok", new_contest_path(@topic), :class => "choice" %>
+                <% if @unfinished_contests.empty? || @unplayable_contests.present? %>
+                  <%= link_to "ok", new_contest_path(@topic), class: "choice" %>
+                <% else %>
+                  <%= link_to "ok", continue_contest_path(@unfinished_contests.first), class: "choice" %>
+                <% end %>
               </div>
           </div>
       </div>

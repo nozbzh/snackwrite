@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019045320) do
+ActiveRecord::Schema.define(version: 20151024205349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contests", force: :cascade do |t|
-    t.string   "word"
     t.integer  "time_limit"
-    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "topic_id"
+    t.string   "aasm_state"
   end
+
+  add_index "contests", ["topic_id"], name: "index_contests_on_topic_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"

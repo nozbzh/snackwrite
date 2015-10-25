@@ -1,9 +1,11 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: :index
+  before_action :set_user, only: :index
+  before_action :authenticate_user!
 
   def index
-    @unfinished_contests = Contest.all.where("status != 'finished'")
-    #@playable_contests = @unfinished_contests.where(!users.inlude?(@user))
+    @unfinished_contests = Contest.all.where(aasm_state: :started)
+    @unplayable_contests = @unfinished_contests & @user.contests
   end
 
   private

@@ -1,12 +1,24 @@
 class Contest < ActiveRecord::Base
+  include AASM
+
   has_many :posts, dependent: :destroy
   has_many :users, through: :posts
+  belongs_to :topic
+  #validates :posts, presence: true
 
-  def finished?
-    if self.status == "finished"
-      return true
-    else
-      return false
+  aasm do
+
+    state :new, initial: true
+    state :started
+    state :finished
+
+    event :make_started do
+      transitions from: :new, to: :started
     end
+
+    event :make_finished do
+      transitions from: :started, to: :finished
+    end
+
   end
 end

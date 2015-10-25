@@ -1,6 +1,5 @@
-<h1>New contest</h1>
-<h2>Your word is: <%= @contest.word %></h2>
-<%= simple_form_for [@contest, @post], url: posts_path(@contest) do |f| %>
+<h2>New contest</h2>
+<%= simple_form_for [@contest, @post], url: create_contests_path(@topic) do |f| %>
   <%= f.error_notification %>
   <%= f.input :content, required: true %>
   <%= f.button :submit, "Send", class: "btn btn-primary" %>
