@@ -1,0 +1,12 @@
+%h1
+  There is an unfinished contest for the word #{@unfinished_contests.first.topic.word}!
+%p= @unfinished_contests.first.topic.definition
+%p.thin-font
+  = @unfinished_contests.first.users.first.name
+  wrote:
+  %br/
+  = @unfinished_contests.first.posts.first.content
+= simple_form_for [@contest, @post], url: create_post_contest_path(@contest) do |f|
+  = f.error_notification
+  = f.input :content, required: true
+  = f.button :submit, "Send", class: "btn btn-primary"

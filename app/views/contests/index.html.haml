@@ -1,0 +1,20 @@
+%h1 All contests
+- if @contests.blank?
+  %p
+    No contest here yet. #{link_to "Be the first to play!", topics_path}
+- else
+  %ul
+    - @contests.each do |contest|
+      %li
+        = link_to "Contest number #{contest.id}", contest_path(contest)
+        %br/
+        = "The word was: #{contest.topic.word}"
+      %ul
+        - contest.posts.each do |post|
+          %li
+            - if post.user == current_user
+              You wrote:
+            - else
+              = "#{post.user.name.capitalize} wrote:"
+            %br/
+            = post.content

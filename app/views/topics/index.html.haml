@@ -1,0 +1,23 @@
+.row
+  .col-xs-12.col-md-12.col-lg-12
+    .row
+      .col-xs-12.col-sm-12.col-md-12
+        %span.word-intro your word is:
+        %span.dropt.word-topic
+          - if @unfinished_contests.empty?
+            = @topic.word
+          - else
+            = @unfinished_contests.first.topic.word
+        %div
+          - if @unfinished_contests.empty?
+            = @topic.definition
+          - else
+            = @unfinished_contests.first.topic.definition
+    .row
+      .col-xs-12.col-sm-12.col-md-12
+        .bubble-shadow.confirm
+        .bubble-push.confirm
+          - if @unfinished_contests.empty?
+            = link_to "ok", new_contest_path(@topic), class: "choice"
+          - else
+            = link_to "ok", continue_contest_path(@unfinished_contests.first), class: "choice"

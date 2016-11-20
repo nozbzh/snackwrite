@@ -1,0 +1,8 @@
+- if @vote.persisted?
+  :plain
+    $('.contest-js').replaceWith("#{escape_javascript(render('posts/index', post: @vote.post))}");
+    $('.voted-js').replaceWith("#{escape_javascript(render('vote', choice: @vote.post.user.name.capitalize))}");
+- else
+  :plain
+    $('.voted-js').replaceWith("#{escape_javascript(render('vote', choice: nil))}");
+

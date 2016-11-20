@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Snackwrite
+    = stylesheet_link_tag    'application', media: 'all'
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+  %body
+    = render 'shared/navbar'
+    = render 'shared/banner'
+    = render 'shared/flashes'
+    = javascript_include_tag 'application'
+    .container-fluid
+      .row
+        .col-xs-12.col-md-10.col-lg-8.col-md-offset-1.col-lg-offset-2
+          = yield

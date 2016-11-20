@@ -1,0 +1,6 @@
+.col-xs-12.col-sm-6.contest-js
+  %h3= "#{post.user == current_user ? 'You' : post.user.name.capitalize} wrote:"
+  %p= post.content
+  %br/
+  - if current_user.can_vote?(@contest)
+    %span= link_to "Vote for #{post.user.name.capitalize}", post_votes_path(@contest, post), method: :post, remote: true
