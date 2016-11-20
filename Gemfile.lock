@@ -42,6 +42,8 @@ GEM
     autoprefixer-rails (5.2.1.1)
       execjs
       json
+    autosize-rails (1.18.17)
+      rails (>= 3.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -214,6 +216,7 @@ DEPENDENCIES
   aasm
   activerecord-reputation-system
   autoprefixer-rails
+  autosize-rails
   better_errors
   binding_of_caller
   bootstrap-sass

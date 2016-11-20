@@ -20,6 +20,7 @@ gem 'aasm'
 gem 'activerecord-reputation-system'
 gem 'omniauth-facebook'
 gem "haml-rails", "~> 0.9"
+gem 'autosize-rails'
 #end of gems I added
 
 group :development, :test do
