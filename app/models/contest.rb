@@ -23,4 +23,5 @@ class Contest < ActiveRecord::Base
     end
 
   end
+
 end

@@ -10,11 +10,8 @@
         %br/
         = "The word was: #{contest.topic.word}"
       %ul
-        - contest.posts.each do |post|
-          %li
-            - if post.user == current_user
-              You wrote:
-            - else
-              = "#{post.user.name.capitalize} wrote:"
-            %br/
-            = post.content
+        %li
+          = "#{contest.users.first.name.capitalize} has #{contest.users.first.total_votes_for(contest)} votes."
+        %li
+          = "#{contest.users.last.name.capitalize} has #{contest.users.last.total_votes_for(contest)} votes."
+

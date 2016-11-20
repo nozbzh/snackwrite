@@ -4,8 +4,10 @@
 .row
   - @contest.posts.each do |post|
     = render 'posts/index', post: post
-.voted-js
-- if current_user.has_voted?(@contest)
-  = "You voted for #{current_user.voted_for(@contest)} on #{current_user.voted_at(@contest).strftime("%b %-d %Y at %I:%M %P")}."
-- elsif current_user.is_participant?(@contest)
-  You participated in this contest, you cannot vote.
+
+- if @contest.finished?
+  .voted-js
+  - if current_user.has_voted?(@contest)
+    = "You voted for #{current_user.voted_for(@contest)} on #{current_user.voted_at(@contest)}."
+  - elsif current_user.is_participant?(@contest)
+    You participated in this contest, you cannot vote.

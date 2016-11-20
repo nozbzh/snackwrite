@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
   end
 
   def voted_at(contest)
-    votes.where(contest: contest).first.created_at
+    votes.where(contest: contest).first.created_at.strftime("%b %-d %Y at %I:%M %P")
+  end
+
+  def total_votes_for(contest)
+    contest.posts.where(user: self).first.votes.count
   end
 end
