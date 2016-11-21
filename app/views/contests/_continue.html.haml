@@ -4,7 +4,8 @@
   = simple_form_for [@contest, @post], url: create_post_contest_path(@contest), remote: true do |f|
     = f.error_notification
     = f.input :content, required: true
-    = f.button :submit, "Done", class: "btn btn-primary post-submit-js"
+    - unless fill_form
+      = f.button :submit, "Done", class: "btn btn-primary post-submit-js"
 
 / %span.post-content-js{style: 'display: none'}
 /   = @unfinished_contests.first.posts.first.content
@@ -17,4 +18,4 @@
 
   - else
     = simple_form_for [@contest, @post], url: create_post_contest_path(@contest), html: {id: 'second-form-js'} do |f|
-      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:", disabled: true
+      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:", disabled: true, placeholder: "Content will be visible once you submit."
