@@ -1,0 +1,6 @@
+- if @post.persisted?
+  :plain
+    $('.post-forms-js').html("#{escape_javascript(render('continue', contest: @contest, post: @post, name: @name, fill_form: true))}");
+- else
+  :plain
+    $('.post-forms-js').append('Something went wrong');

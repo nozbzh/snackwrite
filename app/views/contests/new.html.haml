@@ -1,5 +1,5 @@
 %h2
-  New contest for the word #{@topic.word}
+  New contest for the word #{@topic.word.capitalize}
 %p= @topic.definition
 = simple_form_for [@contest, @post], url: create_contests_path(@topic) do |f|
   = f.error_notification

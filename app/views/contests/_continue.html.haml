@@ -1,0 +1,20 @@
+- fill_form ||= nil
+
+.col-xs-12.col-sm-6
+  = simple_form_for [@contest, @post], url: create_post_contest_path(@contest), remote: true do |f|
+    = f.error_notification
+    = f.input :content, required: true
+    = f.button :submit, "Done", class: "btn btn-primary post-submit-js"
+
+/ %span.post-content-js{style: 'display: none'}
+/   = @unfinished_contests.first.posts.first.content
+
+.col-xs-12.col-sm-6
+
+  - if fill_form
+    = simple_form_for [@unfinished_contests.first, @unfinished_contests.first.posts.first], url: create_post_contest_path(@contest) do |f|
+      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:"
+
+  - else
+    = simple_form_for [@contest, @post], url: create_post_contest_path(@contest), html: {id: 'second-form-js'} do |f|
+      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:", disabled: true

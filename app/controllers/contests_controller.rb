@@ -2,7 +2,7 @@ class ContestsController < ApplicationController
   before_action :find_contest, only: [:show, :continue_contest, :create_post]
   before_action :find_topic, only: [:new, :create]
   before_action :initiate_post, only: [:new, :continue_contest]
-  before_action :set_unfinished_contests, only: [:new, :continue_contest]
+  before_action :set_unfinished_contests, only: [:new, :continue_contest, :create_post]
 
   def index
     @contests = Contest.finished.order("updated_at DESC")
@@ -37,17 +37,15 @@ class ContestsController < ApplicationController
 
   def create_post
     @post = @contest.posts.new(post_params.merge(user: current_user))
+    @name = @unfinished_contests.first.users.first.name.capitalize
     if @contest.aasm_state == "new"
       @contest.make_started!
     elsif @contest.aasm_state == "started"
       @contest.make_finished!
-    else
-      render "topics/index", alert: "Something went wrong"
     end
-    if @post.save
-      redirect_to contest_path(@contest), notice: "Thank you for playing."
-    else
-      render :new, alert: "Couldn't save your post"
+    @post.save
+    respond_to do |format|
+      format.js
     end
   end
 

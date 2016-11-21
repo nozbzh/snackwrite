@@ -2,13 +2,5 @@
   There is an unfinished contest for the word #{@unfinished_contests.first.topic.word.capitalize}!
 %p= @unfinished_contests.first.topic.definition
 
-.row
-  .col-xs-12.col-sm-6
-    = simple_form_for [@contest, @post], url: create_post_contest_path(@contest) do |f|
-      = f.error_notification
-      = f.input :content, required: true
-      = f.button :submit, "Done", class: "btn btn-primary"
-
-  .col-xs-12.col-sm-6
-    = simple_form_for [@unfinished_contests.first, @unfinished_contests.first.posts.first], url: create_post_contest_path(@contest) do |f|
-      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:"
+.row.post-forms-js
+  = render 'continue', contest: @contest, post: @post, name: @unfinished_contests.first.users.first.name.capitalize
