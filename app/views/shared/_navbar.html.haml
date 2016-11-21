@@ -10,13 +10,9 @@
           = image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"
           %ul.dropdown-menu.dropdown-menu-right.navbar-wagon-dropdown-menu
             %li
-              = link_to "#" do
+              = link_to user_path(current_user) do
                 %i.fa.fa-user
                 = t ".profile", default: "Profile"
-            %li
-              = link_to "#" do
-                %i.fa.fa-home
-                = t ".profile", default: "Home"
             %li
               = link_to destroy_user_session_path, method: :delete do
                 %i.fa.fa-sign-out

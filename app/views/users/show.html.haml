@@ -1,0 +1,21 @@
+%h1 My contests
+.row
+  .col-xs-12.col-md-6
+    %h2 Contests I participated in
+
+    - @contest.each do |contest|
+      - post = contest.posts.where(user: current_user).first
+      %h3= "Contest #{contest.id}: #{contest.topic.word.capitalize}"
+      %h4= post.created_at.strftime("%b %-d %Y at %I:%M %P")
+      %h5 You wrote:
+      %p= post.content
+
+  .col-xs-12.col-md-6
+    %h2 Posts I voted for
+    - @voted_contests.each do |contest|
+      - vote = contest.votes.where(user: current_user).first
+      %h3= "Contest #{contest.id}: #{contest.topic.word.capitalize}"
+      %h4= vote.created_at.strftime("%b %-d %Y at %I:%M %P")
+      %h5= "You voted for #{vote.user.name.capitalize} who wrote:"
+      %p= vote.post.content
+

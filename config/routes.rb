@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  resources :users, path: 'my-profile', only: [:show, :edit, :update] do
+  end
+
   resources :topics, only: [:index] do
     #get "choose-your-word" => "topics#choose_word", as: :word
     member do
