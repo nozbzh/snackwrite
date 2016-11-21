@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   root to: 'pages#home'
+  get 'coming-soon', to: 'pages#coming_soon'
 
   resources :users, path: 'my-profile', only: [:show, :edit, :update] do
   end
 
+  resources :votes, only: [:index] do
+  end
+
   resources :topics, only: [:index] do
-    #get "choose-your-word" => "topics#choose_word", as: :word
     member do
       resources :contests, only: [:new] do
         collection do

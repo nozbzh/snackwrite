@@ -1,5 +1,19 @@
-.message
-  - if choice
-    = "You just voted for #{choice}."
+.voted-js
+  - if contest
+    - if current_user.has_voted?(contest)
+      .btn.btn-default.show-results-js
+        Show results
+      .results{style: 'display: none'}
+        %ul
+          - contest.users.each do |user|
+            %li
+              = show_votes_for(contest, user)
+
+      %br/
+      - if next_contest
+        = link_to 'Vote on a different contest', contest_path(next_contest)
+    %br/
+    = vote_message(contest)
+
   - else
-    There was a problem, please try voting again later.
+    %p There was a problem. Please try voting again later.

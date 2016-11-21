@@ -1,8 +1,6 @@
 - if @vote.persisted?
   :plain
-    $('.contest-js').replaceWith("#{escape_javascript(render('contests/show', contest: @contest))}");
-    $('.voted-js').html("#{escape_javascript(render('vote', choice: @vote.post.user.name.capitalize))}");
+    $('.voted-js').html("#{escape_javascript(render('vote', contest: @contest, next_contest: @next_contest))}");
 - else
   :plain
-    $('.voted-js').replaceWith("#{escape_javascript(render('vote', choice: nil))}");
-
+    $('.voted-js').replaceWith("#{escape_javascript(render('vote'))}");

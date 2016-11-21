@@ -13,4 +13,21 @@ module ApplicationHelper
       "You participated in this contest, you cannot vote."
     end
   end
+
+  def link_for_read(contest)
+    if contest
+      link_to "read", contest_path(contest), class: "choice"
+    else
+      link_to "read", coming_soon_path, class: "choice"
+    end
+  end
+
+  def coming_soon_message(user)
+    if user.voted_contests.count == 0
+      "There is no contest for you to vote on yet."
+    else
+      "You already voted on all finished contests."
+    end
+  end
+
 end

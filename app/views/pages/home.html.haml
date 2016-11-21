@@ -2,12 +2,12 @@
   .col-xs-4.col-md-4
     .bubble-shadow.read
     .bubble-push.read
-      = link_to "read", contests_path, :class => "choice"
+      = link_for_read(@contest)
   .col-xs-4.col-md-4
     .bubble-shadow.write
     .bubble-push.write
-      = link_to "write", topics_path, :class => "choice"
+      = link_to "write", topics_path, class: "choice"
   .col-xs-4.col-md-4
     .bubble-shadow.snack
     .bubble-push.snack
-      = link_to "snack", topics_path, :class => "choice"
+      = link_to "snack", votes_path, class: "choice"

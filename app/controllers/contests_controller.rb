@@ -1,16 +1,16 @@
 class ContestsController < ApplicationController
   before_action :find_contest, only: [:show, :continue_contest, :create_post]
-  before_action :set_user
   before_action :find_topic, only: [:new, :create]
   before_action :initiate_post, only: [:new, :continue_contest]
   before_action :set_unfinished_contests, only: [:new, :continue_contest]
 
   def index
-    @contests = Contest.where(aasm_state: :finished).order("updated_at DESC")
-    @unfinished_contests = Contest.where(aasm_state: :started)
+    @contests = Contest.finished.order("updated_at DESC")
+    @unfinished_contests = Contest.started
   end
 
-  def new
+  def show
+    @next_contest = Contest.find_for_vote(current_user)
   end
 
   def create
@@ -51,16 +51,10 @@ class ContestsController < ApplicationController
     end
   end
 
-  def continue_contest
-  end
-
-  def show
-  end
-
   private
 
   def set_unfinished_contests
-    @unfinished_contests = Contest.all.where(aasm_state: :started)
+    @unfinished_contests = Contest.started
   end
 
   def initiate_post
@@ -69,10 +63,6 @@ class ContestsController < ApplicationController
 
   def find_topic
     @topic = Topic.find(params[:id])
-  end
-
-  def set_user
-    @user = current_user
   end
 
   def find_contest

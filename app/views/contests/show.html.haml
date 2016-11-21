@@ -2,4 +2,9 @@
 %h2= "Word was: #{@contest.topic.word.capitalize}"
 
 .row
-  = render 'show', contest: @contest
+  .contest-js
+    - @contest.posts.each do |post|
+      = render 'posts/index', post: post
+
+    - if @contest.finished?
+      = render 'votes/vote', contest: @contest, next_contest: @next_contest
