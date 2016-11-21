@@ -9,9 +9,6 @@ class VotesController < ApplicationController
     if @vote.save
       @message = "You voted for #{@vote.post.user.name.capitalize}"
     end
-    # respond_to do |format|
-    #   format.js
-    # end
   end
 
   private

@@ -1,17 +1,25 @@
-%h1 All contests
-- if @contests.blank?
-  %p
-    No contest here yet. #{link_to "Be the first to play!", topics_path}
-- else
-  %ul
-    - @contests.each do |contest|
-      %li
-        = link_to "Contest number #{contest.id}", contest_path(contest)
-        %br/
-        = "The word was: #{contest.topic.word}"
+.row
+  .col-xs-12.col-sm-6
+    %h2 Finished contests
+    - if @contests.blank?
+      %p
+        No contest here yet. #{link_to "Be the first to play!", topics_path}
+    - else
       %ul
-        %li
-          = "#{contest.users.first.name.capitalize} has #{contest.users.first.total_votes_for(contest)} votes."
-        %li
-          = "#{contest.users.last.name.capitalize} has #{contest.users.last.total_votes_for(contest)} votes."
-
+        - @contests.each do |contest|
+          %li
+            = "Contest number #{contest.id}: #{contest.topic.word.capitalize}"
+            %br/
+            = link_to "View details and vote", contest_path(contest)
+  .col-xs-12.col-sm-6
+    - unless @unfinished_contests.blank?
+      %h2 Unfinished contests
+      %ul
+        - @unfinished_contests.each do |contest|
+          %li
+            = "The word is: #{contest.topic.word.capitalize}"
+            %br/
+            - if current_user.is_participant?(contest)
+              You already participated in this contest.
+            - else
+              = link_to "Participate in this contest", continue_contest_path(contest)

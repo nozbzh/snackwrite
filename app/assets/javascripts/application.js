@@ -8,3 +8,9 @@
 $(document).ready(function(){
   $('textarea').autosize();
 });
+
+$(document).ready(function(){
+  $('.show-results-js').on('click', function(){
+    $('.results').show();
+  });
+});

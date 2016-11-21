@@ -6,7 +6,8 @@ class ContestsController < ApplicationController
   before_action :set_unfinished_contests, only: [:new, :continue_contest]
 
   def index
-    @contests = Contest.all.where(aasm_state: :finished).order("updated_at DESC")
+    @contests = Contest.where(aasm_state: :finished).order("updated_at DESC")
+    @unfinished_contests = Contest.where(aasm_state: :started)
   end
 
   def new
