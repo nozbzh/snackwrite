@@ -3,4 +3,4 @@
 %p= @unfinished_contests.first.topic.definition
 
 .row.post-forms-js
-  = render 'continue', contest: @contest, post: @post, name: @unfinished_contests.first.users.first.name.capitalize
+  = render 'continue', contest: @contest, post: @post, name: @unfinished_contests.first.users.first.to_s

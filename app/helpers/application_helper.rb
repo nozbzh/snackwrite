@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def show_votes_for(contest, user)
-    name = user == current_user ? 'You' : user.name.capitalize
+    name = user == current_user ? 'You' : user.to_s
     first_words = name == 'You' ? "You have" : "#{name} has"
     "#{first_words} #{pluralize(user.total_votes_for(contest), 'vote')}."
   end

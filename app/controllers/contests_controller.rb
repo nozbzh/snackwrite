@@ -37,7 +37,7 @@ class ContestsController < ApplicationController
 
   def create_post
     @post = @contest.posts.new(post_params.merge(user: current_user))
-    @name = @unfinished_contests.first.users.first.name.capitalize
+    @name = @unfinished_contests.first.users.first.to_s
     if @contest.aasm_state == "new"
       @contest.make_started!
     elsif @contest.aasm_state == "started"

@@ -14,8 +14,8 @@
 
   - if fill_form
     = simple_form_for [@unfinished_contests.first, @unfinished_contests.first.posts.first], url: create_post_contest_path(@contest) do |f|
-      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:"
+      = f.input :content, label: "#{@unfinished_contests.first.users.first.to_s} wrote:"
 
   - else
     = simple_form_for [@contest, @post], url: create_post_contest_path(@contest), html: {id: 'second-form-js'} do |f|
-      = f.input :content, label: "#{@unfinished_contests.first.users.first.name.capitalize} wrote:", disabled: true, placeholder: "Content will be visible once you submit."
+      = f.input :content, label: "#{@unfinished_contests.first.users.first.to_s} wrote:", disabled: true, placeholder: "Content will be visible once you submit."

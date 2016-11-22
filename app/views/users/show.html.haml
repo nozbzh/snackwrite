@@ -17,6 +17,6 @@
       - vote = contest.votes.where(user: current_user).first
       %h3= "Contest #{contest.id}: #{contest.topic.word.capitalize}"
       %h4= vote.created_at.strftime("%b %-d %Y at %I:%M %P")
-      %h5= "You voted for #{vote.user.name.capitalize} who wrote:"
+      %h5= "You voted for #{vote.post.user.to_s} who wrote:"
       %p= vote.post.content
 
